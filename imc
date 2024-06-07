@@ -1,0 +1,30 @@
+def calcular_imc(peso, altura):
+    """Calcula o Índice de Massa Corporal (IMC) com base no peso e altura."""
+    imc = peso / (altura ** 2)
+    return imc
+
+while True:
+    try:
+        peso = float(input("Digite seu peso em kg: "))
+        altura = float(input("Digite sua altura em metros: "))
+
+        if peso <= 0 or altura <= 0:
+            raise ValueError("Peso e altura devem ser valores positivos.")
+
+        imc = calcular_imc(peso, altura)
+        print(f"Seu IMC é: {imc:.2f}")
+
+        # Classificação do IMC (opcional)
+        if imc < 18.5:
+            print("Classificação: Abaixo do peso")
+        elif 18.5 <= imc < 25:
+            print("Classificação: Peso normal")
+        elif 25 <= imc < 30:
+            print("Classificação: Sobrepeso")
+        else:
+            print("Classificação: Obesidade")
+
+        break  # Sai do loop se os valores forem válidos
+
+    except ValueError as e:
+        print(f"Erro: {e}. Digite apenas números.")
